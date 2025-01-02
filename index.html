@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Telth</title>
+    <link rel="icon" type="image/x-icon" href="assets/telth.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
+    <style>
+        * {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .footer-gradient {
+            background: linear-gradient(145deg, #4C1D95 0%, #581C87 50%, #6D28D9 100%);
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .glass-effect {
+                backdrop-filter: blur(5px);
+            }
+        }
+
+        .footer-link {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .footer-link:hover::after {
+            width: 100%;
+        }
+
+        @media (hover: hover) {
+            .footer-link:hover {
+                transform: translateX(8px);
+                color: white;
+            }
+
+            .social-icon:hover {
+                transform: translateY(-5px) scale(1.1);
+                color: white;
+            }
+        }
+
+        .social-icon {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .newsletter-input {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .newsletter-input:focus {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .wave-shape {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0.1;
+            transform: translateY(-99%);
+        }
+
+        .glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: #7C3AED;
+            filter: blur(100px);
+            opacity: 0.2;
+        }
+
+        @media (max-width: 768px) {
+            .glow {
+                width: 150px;
+                height: 150px;
+                filter: blur(50px);
+            }
+        }
+
+        /* Accordion styles for mobile */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-content.active {
+            max-height: 500px;
+        }
+
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-icon.active {
+            transform: rotate(180deg);
+        }
+
+        /* Major services section */
+        .card-overlay {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+        }
+
+        .slider-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .slider-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .slide-indicator {
+            transition: all 0.3s ease;
+        }
+
+        .slide-indicator.active {
+            width: 2rem;
+            background-color: #4C1D95;
+        }
+
+        .city-card {
+            transition: all 0.3s ease-in-out;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .city-image {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            height: 70%;
+            transition: all 0.4s ease-in-out;
+            opacity: 0;
+        }
+
+        .city-name {
+            transition: all 0.3s ease-in-out;
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .city-card:hover .city-image {
+            bottom: 0;
+            opacity: 1;
+        }
+
+        .city-card:hover .city-name {
+            top: 20%;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* tabs */
+        .tab-underline {
+            width: 0;
+            height: 2px;
+            background: #6366f1;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active .tab-underline {
+            width: 100%;
+        }
+
+        .device-card {
+            position: relative;
+            overflow: hidden;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+
+        .device-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .device-overlay {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(79, 70, 229, 0.9) 0%, rgba(99, 102, 241, 0.8) 100%);
+            padding: 1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .device-card:hover .device-overlay {
+            bottom: 0;
+        }
+
+        .tab-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            display: none;
+        }
+
+        .tab-content.active {
+            opacity: 1;
+            transform: translateY(0);
+            display: grid;
+        }
+
+        .decoration-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #818cf8, #6366f1);
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        /* care2home */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .delay-200 {
+            animation-delay: 200ms;
+        }
+
+        .delay-400 {
+            animation-delay: 400ms;
+        }
+
+        .delay-600 {
+            animation-delay: 600ms;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-[#F2ECFE]">
+
+    <section class="px-4 w-full">
+        <div class="max-w-7xl mx-auto ">
+            <!-- <div class="decoration-circle w-64 h-64 -top-32 -left-32 absolute"></div>
+            <div class="decoration-circle w-96 h-96 -bottom-48 -right-48 absolute"></div> -->
+
+            <div class="container mx-auto px-4 py-16 relative">
+                <!-- Header Section -->
+                <div class="max-w-3xl  mb-12">
+                    <h2 class="text-5xl font-bold text-gray-900 mb-4">
+                        Advanced Medical Equipment
+                    </h2>
+                    <p class="text-lg text-gray-600">
+                        Explore our cutting-edge healthcare devices designed to provide superior patient care and
+                        diagnostic
+                        accuracy.
+                    </p>
+                </div>
+
+                <!-- Tab Navigation -->
+                <div class="flex flex-wrap  gap-8 mb-12">
+                    <button class="tab-button active group relative px-6 py-2" data-tab="diagnostic">
+                        <span class="text-gray-900 font-medium">Diagnostic Devices</span>
+                        <div class="tab-underline absolute bottom-0 left-0"></div>
+                    </button>
+                    <button class="tab-button group relative px-6 py-2" data-tab="monitoring">
+                        <span class="text-gray-900 font-medium">Monitoring Equipment</span>
+                        <div class="tab-underline absolute bottom-0 left-0"></div>
+                    </button>
+                    <button class="tab-button group relative px-6 py-2" data-tab="surgical">
+                        <span class="text-gray-900 font-medium">Surgical Tools</span>
+                        <div class="tab-underline absolute bottom-0 left-0"></div>
+                    </button>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="tab-content active" data-tab="diagnostic">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="device-card rounded-xl shadow-lg bg-white">
+                            <img src="https://images.unsplash.com/photo-1565647946321-a146ac24a220?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="MRI Scanner" class="w-full h-48 object-cover rounded-t-xl">
+                            <div class="device-overlay">
+                                <h3 class="text-white font-semibold text-lg">MRI Scanner</h3>
+                                <p class="text-gray-100 text-sm mt-1">Advanced magnetic resonance imaging device</p>
+                            </div>
+                        </div>
+                        <div class="device-card rounded-xl shadow-lg bg-white">
+                            <img src="https://images.unsplash.com/photo-1615486510988-2c6ecc66ceba?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="CT Scanner" class="w-full h-48 object-cover rounded-t-xl">
+                            <div class="device-overlay">
+                                <h3 class="text-white font-semibold text-lg">CT Scanner</h3>
+                                <p class="text-gray-100 text-sm mt-1">High-resolution computed tomography system</p>
+                            </div>
+                        </div>
+                        <div class="device-card rounded-xl shadow-lg bg-white">
+                            <img src="https://images.unsplash.com/photo-1615486510940-4e96763c7f6d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="X-Ray Machine" class="w-full h-48 object-cover rounded-t-xl">
+                            <div class="device-overlay">
+                                <h3 class="text-white font-semibold text-lg">X-Ray Machine</h3>
+                                <p class="text-gray-100 text-sm mt-1">Digital radiography system</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" data-tab="monitoring">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="device-card rounded-xl shadow-lg bg-white">
+                            <img src="/api/placeholder/400/300" alt="Patient Monitor"
+                                class="w-full h-48 object-cover rounded-t-xl">
+                            <div class="device-overlay">
+                                <h3 class="text-white font-semibold text-lg">Patient Monitor</h3>
+                                <p class="text-gray-100 text-sm mt-1">Multi-parameter patient monitoring system</p>
+                            </div>
+                        </div>
+                        <div class="device-card rounded-xl shadow-lg bg-white">
+                            <img src="/api/placeholder/400/300" alt="ECG Machine"
+                                class="w-full h-48 object-cover rounded-t-xl">
+                            <div class="device-overlay">
+                                <h3 class="text-white font-semibold text-lg">ECG Machine</h3>
+                                <p class="text-gray-100 text-sm mt-1">12-lead electrocardiogram device</p>
+                            </div>
+                        </div>
+                        <div class="device-card rounded-xl shadow-lg bg-white">
+                            <img src="/api/placeholder/400/300" alt="Pulse Oximeter"
+                                class="w-full h-48 object-cover rounded-t-xl">
+                            <div class="device-overlay">
+                                <h3 class="text-white font-semibold text-lg">Pulse Oximeter</h3>
+                                <p class="text-gray-100 text-sm mt-1">Oxygen saturation monitoring device</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" data-tab="surgical">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="device-card rounded-xl shadow-lg bg-white">
+                            <img src="/api/placeholder/400/300" alt="Surgical Robot"
+                                class="w-full h-48 object-cover rounded-t-xl">
+                            <div class="device-overlay">
+                                <h3 class="text-white font-semibold text-lg">Surgical Robot</h3>
+                                <p class="text-gray-100 text-sm mt-1">Robotic surgical assistance system</p>
+                            </div>
+                        </div>
+                        <div class="device-card rounded-xl shadow-lg bg-white">
+                            <img src="/api/placeholder/400/300" alt="Surgical Microscope"
+                                class="w-full h-48 object-cover rounded-t-xl">
+                            <div class="device-overlay">
+                                <h3 class="text-white font-semibold text-lg">Surgical Microscope</h3>
+                                <p class="text-gray-100 text-sm mt-1">High-precision optical system</p>
+                            </div>
+                        </div>
+                        <div class="device-card rounded-xl shadow-lg bg-white">
+                            <img src="/api/placeholder/400/300" alt="Endoscopy System"
+                                class="w-full h-48 object-cover rounded-t-xl">
+                            <div class="device-overlay">
+                                <h3 class="text-white font-semibold text-lg">Endoscopy System</h3>
+                                <p class="text-gray-100 text-sm mt-1">Advanced visualization system</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="bg-gradient-to-br from-purple-50 via-violet-50 to-white">
+        <section class="py-12 px-4">
+            <div class="max-w-7xl mx-auto">
+                <!-- Hero Section with Overlapping Elements -->
+                <div class="relative mb-12">
+                    <div class="absolute inset-0 bg-purple-900/5 rounded-3xl backdrop-blur-sm"></div>
+                    <div class="relative grid md:grid-cols-2 gap-8 items-center p-6 md:p-8">
+                        <div class="space-y-6">
+                            <div class="inline-block">
+                                <span
+                                    class="bg-purple-50 text-purple-800 text-sm font-semibold px-4 py-1 rounded-full">Care2home</span>
+                            </div>
+                            <h1
+                                class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 to-violet-600 bg-clip-text text-transparent">
+                                Healthcare Delivered to You
+                            </h1>
+                            <p class="text-lg text-gray-600 max-w-xl">
+                                Experience personalized medical care with our revolutionary P3DSC technology, bringing
+                                expert healthcare to your doorstep within 30 minutes.
+                            </p>
+
+                            <!-- Stats Grid -->
+                            <div class="grid grid-cols-3 gap-4 pt-4">
+                                <div class="bg-white/80 backdrop-blur rounded-xl p-4 border border-purple-100">
+                                    <div class="text-2xl font-bold text-purple-600">30min</div>
+                                    <div class="text-sm text-gray-600">Response</div>
+                                </div>
+                                <div class="bg-white/80 backdrop-blur rounded-xl p-4 border border-purple-100">
+                                    <div class="text-2xl font-bold text-purple-600">24/7</div>
+                                    <div class="text-sm text-gray-600">Available</div>
+                                </div>
+                                <div class="bg-white/80 backdrop-blur rounded-xl p-4 border border-purple-100">
+                                    <div class="text-2xl font-bold text-purple-600">100%</div>
+                                    <div class="text-sm text-gray-600">Coverage</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <div
+                                class="absolute -inset-4 bg-gradient-to-r from-purple-500 to-violet-500 rounded-3xl opacity-10 blur-2xl">
+                            </div>
+                            <div class="relative bg-white rounded-2xl shadow-xl overflow-hidden">
+                                <img src="https://img.freepik.com/free-photo/nurse-measuring-patient-blood-pressure_53876-14933.jpg?t=st=1735799450~exp=1735803050~hmac=e42ac2e2fb61cdd518f87a2116c0733380d6e06cc1bb0a0501e2f9bb6fb1247d&w=2000"
+                                    alt="Healthcare Technology" class="w-full h-auto">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features Grid with Hover Effects -->
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Real-time Monitoring -->
+                    <div
+                        class="group bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-purple-100 hover:border-purple-300 transition-all duration-300">
+                        <div
+                            class="w-12 h-12 bg-purple-100 group-hover:bg-purple-200 rounded-xl flex items-center justify-center mb-4 transition-colors duration-300">
+                            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                        </div>
+                        <h3
+                            class="text-xl font-semibold text-gray-900 group-hover:text-purple-600 transition-colors duration-300">
+                            Real-time Monitoring
+                        </h3>
+                        <p class="text-gray-600 mt-2">
+                            Advanced health tracking with AI-powered alerts and personalized care recommendations based
+                            on
+                            your vitals and activity patterns.
+                        </p>
+                        <div class="mt-4 flex items-center text-purple-600 font-medium">
+                            Learn more
+                            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Care Team Coordination -->
+                    <div
+                        class="group bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-purple-100 hover:border-purple-300 transition-all duration-300">
+                        <div
+                            class="w-12 h-12 bg-purple-100 group-hover:bg-purple-200 rounded-xl flex items-center justify-center mb-4 transition-colors duration-300">
+                            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                        </div>
+                        <h3
+                            class="text-xl font-semibold text-gray-900 group-hover:text-purple-600 transition-colors duration-300">
+                            Care Team Coordination
+                        </h3>
+                        <p class="text-gray-600 mt-2">
+                            Unified platform connecting your doctors, specialists, and caregivers for synchronized
+                            healthcare delivery and better outcomes.
+                        </p>
+                        <div class="mt-4 flex items-center text-purple-600 font-medium">
+                            Learn more
+                            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Rapid Response -->
+                    <div
+                        class="group bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-purple-100 hover:border-purple-300 transition-all duration-300">
+                        <div
+                            class="w-12 h-12 bg-purple-100 group-hover:bg-purple-200 rounded-xl flex items-center justify-center mb-4 transition-colors duration-300">
+                            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <h3
+                            class="text-xl font-semibold text-gray-900 group-hover:text-purple-600 transition-colors duration-300">
+                            Rapid Response
+                        </h3>
+                        <p class="text-gray-600 mt-2">
+                            Emergency care within 30 minutes with instant video consultations and smart dispatch of
+                            medical
+                            professionals to your location.
+                        </p>
+                        <div class="mt-4 flex items-center text-purple-600 font-medium">
+                            Learn more
+                            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="container  max-w-7xl mx-auto px-4 py-12">
+        <div class="grid content-grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <!-- Left Content -->
+            <div class="space-y-6">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Our Smart Care Locations</h1>
+                <p class="text-gray-600 text-lg">
+                    We believe in putting you, the patient, at the center of everything we do. Our experienced team
+                    of
+                    healthcare professionals is committed to providing compassionate and comprehensive care tailored
+                    to your
+                    individual needs.
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <!-- City Cards -->
+
+                    <div class="city-card bg-white rounded-lg shadow-md h-40 cursor-pointer relative">
+                        <div class="city-name">Delhi</div>
+                        <img src="assets/delhi.jpg" alt="India Gate" class="city-image object-cover rounded-b-lg">
+                    </div>
+                    <div class="city-card bg-white rounded-lg shadow-md h-40 cursor-pointer relative">
+                        <div class="city-name">Mumbai</div>
+                        <img src="assets/delhi.jpg" alt="Gateway of India" class="city-image object-cover rounded-b-lg">
+                    </div>
+                    <div class="city-card bg-white rounded-lg shadow-md h-40 cursor-pointer relative">
+                        <div class="city-name">Kolkata</div>
+                        <img src="/api/placeholder/200/140" alt="Victoria Memorial"
+                            class="city-image object-cover rounded-b-lg">
+                    </div>
+                    <div class="city-card bg-white rounded-lg shadow-md h-40 cursor-pointer relative">
+                        <div class="city-name">Bangalore</div>
+                        <img src="/api/placeholder/200/140" alt="Vidhana Soudha"
+                            class="city-image object-cover rounded-b-lg">
+                    </div>
+                    <div class="city-card bg-white rounded-lg shadow-md h-40 cursor-pointer relative">
+                        <div class="city-name">Chennai</div>
+                        <img src="/api/placeholder/200/140" alt="Marina Beach"
+                            class="city-image object-cover rounded-b-lg">
+                    </div>
+                    <div class="city-card bg-white rounded-lg shadow-md h-40 cursor-pointer relative">
+                        <div class="city-name">Gurgaon</div>
+                        <img src="assets/gurgaon.png" alt="Cyber Hub" class="city-image object-cover rounded-b-lg">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Single Image -->
+            <div class="w-full h-full">
+                <img src="https://images.unsplash.com/photo-1648792940059-3b782a7b8b20?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Healthcare Professional" class="w-full h-full object-cover rounded-lg ">
+            </div>
+        </div>
+
+        <!-- View All Centers Button -->
+        <!-- <div class="flex justify-end mt-8">
+                <button
+                    class="px-6 py-2 border-2 border-purple-400 text-purple-600 rounded-full hover:bg-purple-50 transition-colors duration-300 flex items-center gap-2">
+                    View All Centres
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </div> -->
+    </div>
+
+    <section class="min-h-screen max-w-7xl pt-20 mx-auto">
+        <!-- Header -->
+        <div class="mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Areas We Serve</h2>
+            <p class="text-gray-600 text-lg max-w-3xl">
+                Our Major Services include custom software development, strategic consulting, digital marketing, and
+                cloud
+                solutions, tailored to drive growth. We deliver innovative, end-to-end support to meet diverse
+                client
+                needs
+                across industries.
+            </p>
+        </div>
+
+        <!-- Slider Container -->
+        <div class="relative">
+            <div class="slider-container flex space-x-6 overflow-x-auto snap-x snap-mandatory pb-12">
+                <!-- Card 1 -->
+                <div class="min-w-[300px] md:min-w-[800px] rounded-3xl overflow-hidden shadow-lg snap-start">
+                    <div class="relative h-[250px] md:h-[500px]">
+                        <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Personal Physicians" class="w-full h-full object-cover" />
+                        <div class="card-overlay absolute inset-0 flex flex-col justify-end p-6">
+                            <h3 class="text-white text-2xl font-bold mb-2">Personal Physicians</h3>
+                            <p class="text-gray-200 text-sm">Expert medical care with a personal touch, ensuring
+                                your
+                                health
+                                is in the best hands.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="min-w-[300px] md:min-w-[800px] rounded-3xl overflow-hidden shadow-lg snap-start">
+                    <div class="relative h-[250px] md:h-[500px]">
+                        <img src="https://images.unsplash.com/photo-1535903640092-9d0f270e02bf?q=80&w=2906&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Health & Visa Card" class="w-full h-full object-cover" />
+                        <div class="card-overlay absolute inset-0 flex flex-col justify-end p-6">
+                            <h3 class="text-white text-2xl font-bold mb-2">Health & Visa Card</h3>
+                            <p class="text-gray-200 text-sm">Integrated healthcare and travel solutions for your
+                                peace
+                                of
+                                mind.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="min-w-[300px] md:min-w-[800px] rounded-3xl overflow-hidden shadow-lg snap-start">
+                    <div class="relative h-[250px] md:h-[500px]">
+                        <img src="https://images.unsplash.com/photo-1579154204449-47c454770447?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Smart Care Hub" class="w-full h-full object-cover" />
+                        <div class="card-overlay absolute inset-0 flex flex-col justify-end p-6">
+                            <h3 class="text-white text-2xl font-bold mb-2">Smart Care Hub</h3>
+                            <p class="text-gray-200 text-sm">Advanced healthcare technology for comprehensive
+                                medical
+                                solutions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="min-w-[300px] md:min-w-[800px] rounded-3xl overflow-hidden shadow-lg snap-start">
+                    <div class="relative h-[250px] md:h-[500px]">
+                        <img src="https://images.unsplash.com/photo-1666887360974-5cab0bd3ef52?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Telehealth Services" class="w-full h-full object-cover" />
+                        <div class="card-overlay absolute inset-0 flex flex-col justify-end p-6">
+                            <h3 class="text-white text-2xl font-bold mb-2">Telehealth Services</h3>
+                            <p class="text-gray-200 text-sm">Remote healthcare solutions for convenient and
+                                accessible
+                                medical care.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="min-w-[300px] md:min-w-[800px] rounded-3xl overflow-hidden shadow-lg snap-start">
+                    <div class="relative h-[250px] md:h-[500px]">
+                        <img src="https://images.unsplash.com/photo-1705264895993-c544cf74a0c7?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Emergency Care" class="w-full h-full object-cover" />
+                        <div class="card-overlay absolute inset-0 flex flex-col justify-end p-6">
+                            <h3 class="text-white text-2xl font-bold mb-2">Emergency Care</h3>
+                            <p class="text-gray-200 text-sm">24/7 emergency medical services when you need them
+                                most.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slider Navigation -->
+            <div class="flex justify-center space-x-2 mt-6">
+                <button class="slide-indicator h-2 w-2 rounded-full bg-gray-300"></button>
+                <button class="slide-indicator h-2 w-2 rounded-full bg-gray-300"></button>
+                <button class="slide-indicator h-2 w-2 rounded-full bg-gray-300"></button>
+                <button class="slide-indicator h-2 w-2 rounded-full bg-gray-300"></button>
+                <button class="slide-indicator h-2 w-2 rounded-full bg-gray-300"></button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-gradient text-gray-300 relative overflow-hidden">
+        <!-- Decorative Elements -->
+        <div class="glow top-0 left-0 hidden md:block"></div>
+        <div class="glow bottom-0 right-0 hidden md:block"></div>
+
+        <!-- Wave SVG -->
+        <svg class="wave-shape hidden md:block" viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,85.3C672,75,768,85,864,90.7C960,96,1056,96,1152,90.7C1248,85,1344,75,1392,69.3L1440,64L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"
+                fill="#ffffff" />
+        </svg>
+
+        <!-- Main Footer Content -->
+        <div class="container mx-auto px-4 sm:px-6 py-8 sm:py-16 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
+                <!-- Brand Section -->
+                <div class="lg:col-span-1">
+                    <div class="flex items-center mb-6 sm:mb-8">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-white rounded-full blur opacity-20"></div>
+                            <img src="https://media.licdn.com/dms/image/v2/D4D0BAQFHrOqZkqUQKA/company-logo_200_200/company-logo_200_200/0/1709191541395/aimu_logo?e=1743638400&v=beta&t=ZIzQ5lcI7Cpy3A-tC8iPTqOfaKsXIjbvDWEy8g3azfI"
+                                alt="Telth.care" class="h-10 rounded-md sm:h-12 relative z-10" />
+                        </div>
+                        <span class="text-white text-xl sm:text-2xl font-bold ml-3 tracking-tight">Telth.care</span>
+                    </div>
+                    <p class="mb-6 sm:mb-8 text-gray-300 leading-relaxed text-sm sm:text-base">A modern healthcare.
+                        Our
+                        team of experienced healthcare professionals is here to support you on your journey to
+                        better
+                        health.</p>
+                    <div class="flex space-x-4 sm:space-x-5">
+                        <a href="#" class="social-icon glass-effect p-2 sm:p-3 rounded-full">
+                            <i class="fab fa-linkedin text-base sm:text-lg"></i>
+                        </a>
+                        <a href="#" class="social-icon glass-effect p-2 sm:p-3 rounded-full">
+                            <i class="fab fa-twitter text-base sm:text-lg"></i>
+                        </a>
+                        <a href="#" class="social-icon glass-effect p-2 sm:p-3 rounded-full">
+                            <i class="fab fa-facebook text-base sm:text-lg"></i>
+                        </a>
+                        <a href="#" class="social-icon glass-effect p-2 sm:p-3 rounded-full">
+                            <i class="fab fa-instagram text-base sm:text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile Accordion Sections -->
+                <div class="lg:hidden space-y-4">
+                    <!-- Major Services Accordion -->
+                    <div class="border-b border-gray-700/50 pb-4">
+                        <button
+                            class="accordion-trigger w-full flex justify-between items-center text-white text-lg font-semibold">
+                            <span>Major Services</span>
+                            <i class="fas fa-chevron-down accordion-icon"></i>
+                        </button>
+                        <div class="accordion-content pt-4">
+                            <ul class="space-y-3">
+                                <li><a href="#" class="footer-link">Personal Physicians</a></li>
+                                <li><a href="#" class="footer-link">Telth Health & Wealth Card</a></li>
+                                <li><a href="#" class="footer-link">Next-gen Health Examination</a></li>
+                                <li><a href="#" class="footer-link">Health and Visa Card</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Telth Smart Care Accordion -->
+                    <div class="border-b border-gray-700/50 pb-4">
+                        <button
+                            class="accordion-trigger w-full flex justify-between items-center text-white text-lg font-semibold">
+                            <span>Telth Smart Care</span>
+                            <i class="fas fa-chevron-down accordion-icon"></i>
+                        </button>
+                        <div class="accordion-content pt-4">
+                            <ul class="space-y-3">
+                                <li><a href="#" class="footer-link">Powered Hospitals</a></li>
+                                <li><a href="#" class="footer-link">Smart Clinics</a></li>
+                                <li><a href="#" class="footer-link">KIOSKS</a></li>
+                                <li><a href="#" class="footer-link">Smart Care Hubs</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Services for Everyone Accordion -->
+                    <div class="border-b border-gray-700/50 pb-4">
+                        <button
+                            class="accordion-trigger w-full flex justify-between items-center text-white text-lg font-semibold">
+                            <span>Services for Everyone</span>
+                            <i class="fas fa-chevron-down accordion-icon"></i>
+                        </button>
+                        <div class="accordion-content pt-4">
+                            <ul class="space-y-3">
+                                <li><a href="#" class="footer-link">Care and Wellness Seekers</a></li>
+                                <li><a href="#" class="footer-link">Care Providers</a></li>
+                                <li><a href="#" class="footer-link">Government Agencies</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu Sections -->
+                <div class="hidden lg:block">
+                    <h3 class="text-white text-xl font-semibold tracking-wide mb-6">Major Services</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="footer-link">Personal Physicians</a></li>
+                        <li><a href="#" class="footer-link">Telth Health & Wealth Card</a></li>
+                        <li><a href="#" class="footer-link">Next-gen Health Examination</a></li>
+                        <li><a href="#" class="footer-link">Health and Visa Card</a></li>
+                    </ul>
+                </div>
+
+                <div class="hidden lg:block">
+                    <h3 class="text-white text-xl font-semibold tracking-wide mb-6">Telth Smart Care</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="footer-link">Powered Hospitals</a></li>
+                        <li><a href="#" class="footer-link">Smart Clinics</a></li>
+                        <li><a href="#" class="footer-link">KIOSKS</a></li>
+                        <li><a href="#" class="footer-link">Smart Care Hubs</a></li>
+                    </ul>
+                </div>
+
+                <div class="hidden lg:block">
+                    <h3 class="text-white text-xl font-semibold tracking-wide mb-6">Services for Everyone</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="footer-link">Care and Wellness Seekers</a></li>
+                        <li><a href="#" class="footer-link">Care Providers</a></li>
+                        <li><a href="#" class="footer-link">Government Agencies</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter Signup -->
+                <div class="col-span-1">
+                    <h3 class="text-white text-xl font-semibold tracking-wide mb-6">Stay Connected</h3>
+                    <div class="glass-effect p-4 sm:p-6 rounded-xl sm:rounded-2xl space-y-4">
+                        <input type="email" placeholder="Enter your email address"
+                            class="newsletter-input w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl border border-gray-600 focus:outline-none focus:border-white text-white placeholder-gray-400 text-sm sm:text-base" />
+                        <button
+                            class="w-full bg-white text-purple-900 px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl font-semibold hover:bg-gray-100 transition-colors duration-300 flex items-center justify-center space-x-2 text-sm sm:text-base">
+                            <span>Subscribe</span>
+                            <i class="fas fa-arrow-right text-xs sm:text-sm"></i>
+                        </button>
+                        <div class="flex items-center space-x-2">
+                            <input type="checkbox" id="privacy" class="rounded border-gray-400" />
+                            <label for="privacy" class="text-xs sm:text-sm">I agree to the privacy policy</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="border-t border-gray-700/50">
+            <div class="container mx-auto px-4 sm:px-6 py-4 sm:py-6">
+                <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+                    <div class="text-xs sm:text-sm order-2 sm:order-1">
+                        Copyright © 2024 <span class="text-white font-medium">Telth.org</span>
+                    </div>
+                    <div class="flex space-x-4 sm:space-x-6 text-xs sm:text-sm order-1 sm:order-2">
+                        <a href="#" class="hover:text-white transition-colors duration-300">Privacy Policy</a>
+                        <a href="#" class="hover:text-white transition-colors duration-300">Terms & Conditions</a>
+                    </div>
+                    <div
+                        class="glass-effect px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm flex flex-wrap justify-center sm:flex-nowrap items-center space-x-2 sm:space-x-4 order-3">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 7234 567 891</span>
+                        </div>
+                        <div class="flex items-center space-x-2 mt-2 sm:mt-0">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>17 York Street London, UK</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality for mobile
+        document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const content = trigger.nextElementSibling;
+                const icon = trigger.querySelector('.accordion-icon');
+
+                // Toggle current accordion
+                content.classList.toggle('active');
+                icon.classList.toggle('active');
+
+                // Close other accordions
+                document.querySelectorAll('.accordion-trigger').forEach(otherTrigger => {
+                    if (otherTrigger !== trigger) {
+                        const otherContent = otherTrigger.nextElementSibling;
+                        const otherIcon = otherTrigger.querySelector('.accordion-icon');
+                        otherContent.classList.remove('active');
+                        otherIcon.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Smooth scroll for footer links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect for glow elements (desktop only)
+        if (window.innerWidth > 768) {
+            document.addEventListener('mousemove', (e) => {
+                const glows = document.querySelectorAll('.glow');
+                const mouseX = e.clientX / window.innerWidth;
+                const mouseY = e.clientY / window.innerHeight;
+
+                glows.forEach((glow, index) => {
+                    const offsetX = (mouseX - 0.5) * (index + 1) * 20;
+                    const offsetY = (mouseY - 0.5) * (index + 1) * 20;
+                    glow.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+                });
+            });
+        }
+
+        // Responsive behavior for newsletter input
+        const newsletterInput = document.querySelector('.newsletter-input');
+        if (newsletterInput) {
+            newsletterInput.addEventListener('focus', () => {
+                if (window.innerWidth > 768) {
+                    newsletterInput.classList.add('scale-105');
+                }
+            });
+
+            newsletterInput.addEventListener('blur', () => {
+                newsletterInput.classList.remove('scale-105');
+            });
+        }
+
+        // Handle responsive menu state
+        function handleResize() {
+            const width = window.innerWidth;
+            if (width >= 1024) { // lg breakpoint
+                document.querySelectorAll('.accordion-content').forEach(content => {
+                    content.style.maxHeight = '';
+                    content.classList.remove('active');
+                });
+                document.querySelectorAll('.accordion-icon').forEach(icon => {
+                    icon.classList.remove('active');
+                });
+            }
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleResize();
+    </script>
+
+    <script>
+        const sliderContainer = document.querySelector('.slider-container');
+        const slides = document.querySelectorAll('.slider-container > div');
+        const indicators = document.querySelectorAll('.slide-indicator');
+
+        // Initialize first indicator
+        indicators[0].classList.add('active');
+
+        // Update indicators based on scroll position
+        sliderContainer.addEventListener('scroll', () => {
+            const scrollPosition = sliderContainer.scrollLeft;
+            const slideWidth = slides[0].offsetWidth + 24; // Adding gap of 24px (space-x-6)
+            const currentSlideIndex = Math.round(scrollPosition / slideWidth);
+
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlideIndex) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        });
+
+        // Handle indicator clicks
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                const slideWidth = slides[0].offsetWidth + 24;
+                sliderContainer.scrollTo({
+                    left: slideWidth * index,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add touch scroll animation
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        sliderContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            sliderContainer.classList.add('cursor-grabbing');
+            startX = e.pageX - sliderContainer.offsetLeft;
+            scrollLeft = sliderContainer.scrollLeft;
+        });
+
+        sliderContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+            sliderContainer.classList.remove('cursor-grabbing');
+        });
+
+        sliderContainer.addEventListener('mouseup', () => {
+            isDown = false;
+            sliderContainer.classList.remove('cursor-grabbing');
+        });
+
+        sliderContainer.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - sliderContainer.offsetLeft;
+            const walk = (x - startX) * 2;
+            sliderContainer.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+
+    <script>
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tab = button.dataset.tab;
+
+                // Update active states
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                // Activate selected tab
+                button.classList.add('active');
+                document.querySelector(`.tab-content[data-tab="${tab}"]`).classList.add('active');
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            const elements = document.querySelectorAll('.scroll-reveal');
+
+            elements.forEach((element, index) => {
+                gsap.from(element, {
+                    opacity: 0,
+                    y: 30,
+                    duration: 0.8,
+                    delay: index * 0.2,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top bottom-=100',
+                        toggleActions: 'play none none reverse'
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
