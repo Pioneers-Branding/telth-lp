@@ -276,6 +276,71 @@
         .delay-600 {
             animation-delay: 600ms;
         }
+
+        .category-btn.active {
+            background-color: rgb(124 58 237);
+            color: white;
+            /* transform: translateY(-4px); */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-btn.active svg {
+            color: white;
+        }
+
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-wrapper {
+            position: relative;
+
+        }
+
+        .category-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .category-content.active {
+            opacity: 1;
+            pointer-events: auto;
+            position: relative;
+        }
+
+        .image-container img {
+            transition: all 0.7s ease-in-out;
+        }
+
+        .image-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .service-card {
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .benefit-item {
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateX(8px);
+        }
     </style>
 </head>
 
@@ -477,14 +542,14 @@
                             on
                             your vitals and activity patterns.
                         </p>
-                        <div class="mt-4 flex items-center text-purple-600 font-medium">
+                        <!-- <div class="mt-4 flex items-center text-purple-600 font-medium">
                             Learn more
                             <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300"
                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 5l7 7-7 7" />
                             </svg>
-                        </div>
+                        </div> -->
                     </div>
 
                     <!-- Care Team Coordination -->
@@ -505,14 +570,14 @@
                             Unified platform connecting your doctors, specialists, and caregivers for synchronized
                             healthcare delivery and better outcomes.
                         </p>
-                        <div class="mt-4 flex items-center text-purple-600 font-medium">
+                        <!-- <div class="mt-4 flex items-center text-purple-600 font-medium">
                             Learn more
                             <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300"
                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 5l7 7-7 7" />
                             </svg>
-                        </div>
+                        </div> -->
                     </div>
 
                     <!-- Rapid Response -->
@@ -534,85 +599,894 @@
                             medical
                             professionals to your location.
                         </p>
-                        <div class="mt-4 flex items-center text-purple-600 font-medium">
+                        <!-- <div class="mt-4 flex items-center text-purple-600 font-medium">
                             Learn more
                             <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300"
                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 5l7 7-7 7" />
                             </svg>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </section>
     </div>
 
-    <div class="container  max-w-7xl mx-auto px-4 py-12">
+    <div class="bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-600 text-white overflow-hidden">
+        <section class="relative py-20">
+            <!-- Decorative Background Elements -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div
+                    class="absolute top-0 left-0 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob">
+                </div>
+                <div
+                    class="absolute top-0 right-0 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000">
+                </div>
+                <div
+                    class="absolute -bottom-8 left-20 w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000">
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 relative">
+                <!-- Hero Section -->
+                <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
+                    <!-- Left Content -->
+                    <div class="relative z-10">
+                        <div class="space-y-6">
+                            <div
+                                class="inline-flex items-center space-x-2 px-4 py-1 bg-violet-800/50 backdrop-blur-sm rounded-full">
+                                <span class="flex h-2 w-2 rounded-full bg-violet-400 animate-pulse"></span>
+                                <span class="inline-block  text-sm font-medium text-violet-200">
+                                    Revolutionary Healthcare
+                                </span>
+                            </div>
+                            <h1 class="text-5xl md:text-6xl font-bold leading-tight">
+                                <span
+                                    class="bg-gradient-to-r from-violet-200 to-pink-200 bg-clip-text text-transparent">
+                                    Telth Health & Wealth Card
+                                </span>
+                            </h1>
+                            <p class="text-xl text-violet-100">
+                                Your Health. Your Wealth. One Card.
+                            </p>
+                            <p class="text-violet-200 text-lg">
+                                The Telth Health & Wealth Card redefines healthcare financing by combining health
+                                benefits
+                                with wealth-building opportunities.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Right Image -->
+                    <div class="relative group">
+                        <!-- <div
+                            class="absolute -inset-1 bg-gradient-to-r from-violet-400 to-pink-400 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse">
+                        </div> -->
+                        <div class="relative p-1">
+                            <!-- <div
+                                class="bg-gradient-to-r from-violet-900 to-purple-900 rounded-xl overflow-hidden max-h-sm max-w-xl ob"> -->
+                            <img src="assets/credit-card-payment.png" alt="Telth Card"
+                                class=" mix-blend-luminosity opacity-90 group-hover:opacity-100 transition duration-300 transform group-hover:scale-105  object-cover h-80 my-2 w-full">
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Feature Cards -->
+
+                    <!-- Healthcare Coverage -->
+                    <div class="group relative hover:-translate-y-1 transition-all duration-300">
+                        <!-- <div
+                            class="absolute -inset-0.5 bg-gradient-to-r from-violet-500 to-purple-500 rounded-xl blur opacity-50 group-hover:opacity-75 transition duration-500">
+                        </div> -->
+                        <div
+                            class="relative bg-black/40 backdrop-blur-xl p-6 rounded-lg border border-violet-800/50 hover:border-violet-600 transition duration-300">
+                            <div class="flex items-center justify-between mb-4">
+                                <div
+                                    class="w-12 h-12 bg-violet-800/50 rounded-lg flex items-center justify-center group-hover:scale-110 transition duration-300">
+                                    <svg class="w-6 h-6 text-violet-200" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <h3
+                                class="text-lg font-semibold text-violet-200 mb-2 group-hover:text-pink-200 transition-colors">
+                                Comprehensive Healthcare Coverage</h3>
+                            <p class="text-violet-300">Access a wide network of hospitals, pharmacies, diagnostic
+                                centers,
+                                and wellness facilities.</p>
+                            <div
+                                class="mt-4 h-1 w-0 group-hover:w-full bg-gradient-to-r from-violet-500 to-pink-500 transition-all duration-300">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Financial Growth -->
+                    <div class="group relative hover:-translate-y-1 transition-all duration-300">
+                        <!-- <div
+                                                class="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-violet-500 rounded-xl blur opacity-50 group-hover:opacity-75 transition duration-500">
+                                            </div> -->
+                        <div
+                            class="relative bg-black/40 backdrop-blur-xl p-6 rounded-lg border border-violet-800/50 hover:border-violet-600 transition duration-300">
+                            <div class="flex items-center justify-between mb-4">
+                                <div
+                                    class="w-12 h-12 bg-violet-800/50 rounded-lg flex items-center justify-center group-hover:scale-110 transition duration-300">
+                                    <svg class="w-6 h-6 text-violet-200" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <h3
+                                class="text-lg font-semibold text-violet-200 mb-2 group-hover:text-pink-200 transition-colors">
+                                Exclusive Partner Benefits</h3>
+                            <p class="text-violet-300">Enjoy discounts on medications, wellness centers, shopping
+                                outlets,
+                                and even dining at select restaurants.</p>
+                            <div
+                                class="mt-4 h-1 w-0 group-hover:w-full bg-gradient-to-r from-indigo-500 to-violet-500 transition-all duration-300">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Flexible Payment -->
+                    <div class="group relative hover:-translate-y-1 transition-all duration-300">
+                        <!-- <div
+                            class="absolute -inset-0.5 bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl blur opacity-50 group-hover:opacity-75 transition duration-500">
+                        </div> -->
+                        <div
+                            class="relative bg-black/40 backdrop-blur-xl p-6 rounded-lg border border-violet-800/50 hover:border-violet-600 transition duration-300">
+                            <div class="flex items-center justify-between mb-4">
+                                <div
+                                    class="w-12 h-12 bg-violet-800/50 rounded-lg flex items-center justify-center group-hover:scale-110 transition duration-300">
+                                    <svg class="w-6 h-6 text-violet-200" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <h3
+                                class="text-lg font-semibold text-violet-200 mb-2 group-hover:text-pink-200 transition-colors">
+                                Flexible Payment Options</h3>
+                            <p class="text-violet-300">Supports payments through personal funds, health insurance, and
+                                government programs like PMJOY.</p>
+                            <div
+                                class="mt-4 h-1 w-0 group-hover:w-full bg-gradient-to-r from-pink-500 to-purple-500 transition-all duration-300">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Partner Benefits -->
+                    <div class="group relative hover:-translate-y-1 transition-all duration-300">
+                        <!-- <div
+                                                class="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl blur opacity-50 group-hover:opacity-75 transition duration-500">
+                                            </div> -->
+                        <div
+                            class="relative bg-black/40 backdrop-blur-xl p-6 rounded-lg border border-violet-800/50 hover:border-violet-600 transition duration-300">
+                            <div class="flex items-center justify-between mb-4">
+                                <div
+                                    class="w-12 h-12 bg-violet-800/50 rounded-lg flex items-center justify-center group-hover:scale-110 transition duration-300">
+                                    <svg class="w-6 h-6 text-violet-200" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <h3
+                                class="text-lg font-semibold text-violet-200 mb-2 group-hover:text-pink-200 transition-colors">
+                                Financial Growth Opportunities</h3>
+                            <p class="text-violet-300">Unused care plan funds are saved in your Wealth Wallet and
+                                converted
+                                into DBS Bank digital gold, redeemable as physical gold after 5 or 10 years.</p>
+                            <div
+                                class="mt-4 h-1 w-0 group-hover:w-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-300">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chronic Care Support -->
+                    <div
+                        class="group relative md:col-span-2 lg:col-span-1 hover:-translate-y-1 transition-all duration-300">
+                        <!-- <div
+                            class="absolute -inset-0.5 bg-gradient-to-r from-violet-500 to-indigo-500 rounded-xl blur opacity-50 group-hover:opacity-75 transition duration-500">
+                        </div> -->
+                        <div
+                            class="relative bg-black/40 backdrop-blur-xl p-6 rounded-lg border border-violet-800/50 hover:border-violet-600 transition duration-300">
+                            <div class="flex items-center justify-between mb-4">
+                                <div
+                                    class="w-12 h-12 bg-violet-800/50 rounded-lg flex items-center justify-center group-hover:scale-110 transition duration-300">
+                                    <svg class="w-6 h-6 text-violet-200" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <h3
+                                class="text-lg font-semibold text-violet-200 mb-2 group-hover:text-pink-200 transition-colors">
+                                Chronic Care Support</h3>
+                            <p class="text-violet-300">Includes pre-loaded care packages for conditions like diabetes
+                                and
+                                hypertension, with coverage for consultations, medications, and tests.</p>
+                            <div
+                                class="mt-4 h-1 w-0 group-hover:w-full bg-gradient-to-r from-violet-500 to-indigo-500 transition-all duration-300">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom CTA Section -->
+                <!-- <div class="mt-16 text-center">
+                    <div class="inline-flex space-x-4">
+                        <button
+                            class="px-8 py-3 bg-violet-600 hover:bg-violet-700 rounded-lg text-white font-semibold transition duration-300 transform hover:scale-105">
+                            Get Started
+                        </button>
+                        <button
+                            class="px-8 py-3 bg-transparent border border-violet-400 hover:border-violet-300 rounded-lg text-violet-200 font-semibold transition duration-300 transform hover:scale-105">
+                            Learn More
+                        </button>
+                    </div>
+                </div> -->
+            </div>
+        </section>
+    </div>
+
+    <section class="py-20 overflow-hidden max-w-7xl mx-auto">
+        <!-- Header -->
+        <div class="container mx-auto px-4 mb-16">
+            <div class="relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-indigo-600/10 transform -skew-y-6">
+                </div>
+                <div class="relative">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 text-center" data-aos="fade-up">
+                        Empowering Health and Wellness for All
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto text-center" data-aos="fade-up"
+                        data-aos-delay="100">
+                        Explore how Telth's comprehensive services cater to different stakeholders in the healthcare
+                        ecosystem, including care seekers, care providers, and government agencies.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Cards -->
+        <div class="space-y-16 mt-20">
+            <!-- Care Seekers - Left Aligned -->
+            <div class="container mx-auto px-4">
+                <div class="relative" data-aos="fade-right">
+                    <div class="">
+                        <div
+                            class="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-3xl overflow-hidden shadow-xl">
+                            <div class="flex flex-col lg:flex-row items-center">
+                                <div class="lg:w-2/5 p-8 lg:p-12">
+                                    <div
+                                        class="h-14 w-14 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
+                                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-3xl font-bold text-gray-900 mb-4">For Care & Wellness Seekers</h3>
+                                    <p class="text-lg text-purple-700 font-semibold mb-4">Personalized Healthcare,
+                                        Directly
+                                        to You</p>
+                                    <p class="text-gray-600 mb-8">
+                                        At Telth, we provide customized care plans and advanced health monitoring to
+                                        ensure
+                                        that every individual receives the care they need, when they need it.
+                                    </p>
+                                </div>
+                                <div class="lg:w-3/5 p-8 lg:p-12 bg-white">
+                                    <div class="space-y-6">
+                                        <div class="benefit-item flex items-center p-4 rounded-xl bg-purple-50">
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
+                                                    <svg class="w-6 h-6 text-purple-600" fill="none"
+                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="ml-4">
+                                                <h4 class="font-semibold text-gray-900">Personal Physicians</h4>
+                                                <p class="text-gray-600">Access to dedicated healthcare professionals
+                                                    without additional costs</p>
+                                            </div>
+                                        </div>
+                                        <div class="benefit-item flex items-center p-4 rounded-xl bg-purple-50">
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
+                                                    <svg class="w-6 h-6 text-purple-600" fill="none"
+                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="ml-4">
+                                                <h4 class="font-semibold text-gray-900">Continuous Care with Health Card
+                                                </h4>
+                                                <p class="text-gray-600">Manage your healthcare expenses while building
+                                                    wealth</p>
+                                            </div>
+                                        </div>
+                                        <div class="benefit-item flex items-center p-4 rounded-xl bg-purple-50">
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
+                                                    <svg class="w-6 h-6 text-purple-600" fill="none"
+                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="ml-4">
+                                                <h4 class="font-semibold text-gray-900">Next-gen Health Examination
+                                                    Systems
+                                                </h4>
+                                                <p class="text-gray-600">Advanced diagnostic tools at your fingertips
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button
+                                        class="mt-8 w-full py-4 bg-purple-600 text-white rounded-xl font-medium transition-all duration-300 hover:bg-purple-700 hover:shadow-lg transform hover:-translate-y-1">
+                                        Discover Personal Care Options
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Care Providers - Right Aligned -->
+            <div class="container mx-auto px-4">
+                <div class="relative" data-aos="fade-left">
+                    <div class="">
+                        <div
+                            class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl overflow-hidden shadow-xl">
+                            <div class="flex flex-col lg:flex-row-reverse items-center">
+                                <div class="lg:w-2/5 p-8 lg:p-12">
+                                    <div
+                                        class="h-14 w-14 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6">
+                                        <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-3xl font-bold text-gray-900 mb-4">For Care Providers & Hospitals
+                                    </h3>
+                                    <p class="text-lg text-indigo-700 font-semibold mb-4">Enhance Your Practice with
+                                        Advanced Tools</p>
+                                    <p class="text-gray-600 mb-8">
+                                        Telth equips care providers with cutting-edge technology and support to improve
+                                        patient care and operational
+                                        efficiency.
+                                    </p>
+                                </div>
+                                <div class="lg:w-3/5 p-8 lg:p-12 bg-white">
+                                    <div class="space-y-6">
+                                        <div class="benefit-item flex items-center p-4 rounded-xl bg-indigo-50">
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center">
+                                                    <svg class="w-6 h-6 text-indigo-600" fill="none"
+                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="ml-4">
+                                                <h4 class="font-semibold text-gray-900">Partnership Opportunities</h4>
+                                                <p class="text-gray-600">Grow your practice through our expansive
+                                                    network</p>
+                                            </div>
+                                        </div>
+                                        <div class="benefit-item flex items-center p-4 rounded-xl bg-indigo-50">
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center">
+                                                    <svg class="w-6 h-6 text-indigo-600" fill="none"
+                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="ml-4">
+                                                <h4 class="font-semibold text-gray-900">Integration Options</h4>
+                                                <p class="text-gray-600">Seamless integration with your existing systems
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="benefit-item flex items-center p-4 rounded-xl bg-indigo-50">
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center">
+                                                    <svg class="w-6 h-6 text-indigo-600" fill="none"
+                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="ml-4">
+                                                <h4 class="font-semibold text-gray-900">Training & Support</h4>
+                                                <p class="text-gray-600">Comprehensive training for all Telth devices
+                                                    and platforms</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button
+                                        class="mt-8 w-full py-4 bg-indigo-600 text-white rounded-xl font-medium transition-all duration-300 hover:bg-indigo-700 hover:shadow-lg transform hover:-translate-y-1">
+                                        Join Our Provider Network
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Government Agencies - Center Aligned -->
+            <div class="container mx-auto px-4">
+                <div class="relative" data-aos="fade-up">
+                    <div class=" ">
+                        <div
+                            class="bg-gradient-to-br from-violet-50 to-purple-50 rounded-3xl overflow-hidden shadow-xl">
+                            <div class="grid lg:grid-cols-2 items-center">
+                                <div class="p-8 lg:p-12">
+                                    <div
+                                        class="h-14 w-14 bg-violet-100 rounded-2xl flex items-center justify-center mb-6">
+                                        <svg class="w-8 h-8 text-violet-600" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-3xl font-bold text-gray-900 mb-4">For Government Agencies</h3>
+                                    <p class="text-lg text-violet-700 font-semibold mb-4">Partnering for Public Health
+                                        Success</p>
+                                    <p class="text-gray-600 mb-8">
+                                        Telth collaborates with government agencies to deploy scalable health solutions
+                                        that address public health challenges and improve community well-being.
+                                    </p>
+                                </div>
+                                <div class="p-8 lg:p-12 bg-white">
+                                    <div class="space-y-6">
+                                        <div class="benefit-item flex items-center p-4 rounded-xl bg-violet-50">
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="w-10 h-10 bg-violet-100 rounded-xl flex items-center justify-center">
+                                                    <svg class="w-6 h-6 text-violet-600" fill="none"
+                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="ml-4">
+                                                <h4 class="font-semibold text-gray-900">Healthcare Solutions</h4>
+                                                <p class="text-gray-600">Customized solutions to meet public health
+                                                    needs</p>
+                                            </div>
+                                        </div>
+                                        <div class="benefit-item flex items-center p-4 rounded-xl bg-violet-50">
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="w-10 h-10 bg-violet-100 rounded-xl flex items-center justify-center">
+                                                    <svg class="w-6 h-6 text-violet-600" fill="none"
+                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="ml-4">
+                                                <h4 class="font-semibold text-gray-900">Implementation Strategy</h4>
+                                                <p class="text-gray-600">Expert support for deploying Telth technology
+                                                    effectively</p>
+                                            </div>
+                                        </div>
+                                        <div class="benefit-item flex items-center p-4 rounded-xl bg-violet-50">
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="w-10 h-10 bg-violet-100 rounded-xl flex items-center justify-center">
+                                                    <svg class="w-6 h-6 text-violet-600" fill="none"
+                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="ml-4">
+                                                <h4 class="font-semibold text-gray-900">Data-Driven Insights</h4>
+                                                <p class="text-gray-600">Access to real-time health data to inform
+                                                    policy and health interventions</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button
+                                        class="mt-8 w-full py-4 bg-violet-600 text-white rounded-xl font-medium transition-all duration-300 hover:bg-violet-700 hover:shadow-lg transform hover:-translate-y-1">
+                                        Learn About Government Partnerships
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container max-w-7xl mx-auto px-4 py-16">
         <div class="grid content-grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <!-- Left Content -->
             <div class="space-y-6">
                 <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Our Smart Care Locations</h1>
                 <p class="text-gray-600 text-lg">
                     We believe in putting you, the patient, at the center of everything we do. Our experienced team
-                    of
-                    healthcare professionals is committed to providing compassionate and comprehensive care tailored
-                    to your
-                    individual needs.
+                    of healthcare professionals is committed to providing compassionate and comprehensive care tailored
+                    to your individual needs.
                 </p>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <!-- City Cards -->
+                    <div class="relative bg-white rounded-lg shadow-md h-40 cursor-pointer overflow-hidden group">
+                        <div class="absolute inset-x-0 top-0  p-4 z-10">
+                            <div class="text-gray-900 font-semibold text-center">Delhi</div>
+                        </div>
+                        <img src="assets/delhi.jpg" alt="India Gate"
+                            class="absolute inset-0 w-full h-full object-cover transform translate-y-12 group-hover:translate-y-2 transition-transform duration-300 ease-in-out">
+                    </div>
 
-                    <div class="city-card bg-white rounded-lg shadow-md h-40 cursor-pointer relative">
-                        <div class="city-name">Delhi</div>
-                        <img src="assets/delhi.jpg" alt="India Gate" class="city-image object-cover rounded-b-lg">
+                    <div class="relative bg-white rounded-lg shadow-md h-40 cursor-pointer overflow-hidden group">
+                        <div class="absolute inset-x-0 top-0  p-4 z-10">
+                            <div class="text-gray-900 font-semibold text-center">Delhi</div>
+                        </div>
+                        <img src="assets/delhi.jpg" alt="India Gate"
+                            class="absolute inset-0 w-full h-full object-cover transform translate-y-12 group-hover:translate-y-2 transition-transform duration-300 ease-in-out">
                     </div>
-                    <div class="city-card bg-white rounded-lg shadow-md h-40 cursor-pointer relative">
-                        <div class="city-name">Mumbai</div>
-                        <img src="assets/delhi.jpg" alt="Gateway of India" class="city-image object-cover rounded-b-lg">
+
+                    <div class="relative bg-white rounded-lg shadow-md h-40 cursor-pointer overflow-hidden group">
+                        <div class="absolute inset-x-0 top-0  p-4 z-10">
+                            <div class="text-gray-900 font-semibold text-center">Delhi</div>
+                        </div>
+                        <img src="assets/delhi.jpg" alt="India Gate"
+                            class="absolute inset-0 w-full h-full object-cover transform translate-y-12 group-hover:translate-y-2 transition-transform duration-300 ease-in-out">
                     </div>
-                    <div class="city-card bg-white rounded-lg shadow-md h-40 cursor-pointer relative">
-                        <div class="city-name">Kolkata</div>
-                        <img src="/api/placeholder/200/140" alt="Victoria Memorial"
-                            class="city-image object-cover rounded-b-lg">
+
+                    <div class="relative bg-white rounded-lg shadow-md h-40 cursor-pointer overflow-hidden group">
+                        <div class="absolute inset-x-0 top-0  p-4 z-10">
+                            <div class="text-gray-900 font-semibold text-center">Delhi</div>
+                        </div>
+                        <img src="assets/delhi.jpg" alt="India Gate"
+                            class="absolute inset-0 w-full h-full object-cover transform translate-y-12 group-hover:translate-y-2 transition-transform duration-300 ease-in-out">
                     </div>
-                    <div class="city-card bg-white rounded-lg shadow-md h-40 cursor-pointer relative">
-                        <div class="city-name">Bangalore</div>
-                        <img src="/api/placeholder/200/140" alt="Vidhana Soudha"
-                            class="city-image object-cover rounded-b-lg">
+
+                    <div class="relative bg-white rounded-lg shadow-md h-40 cursor-pointer overflow-hidden group">
+                        <div class="absolute inset-x-0 top-0  p-4 z-10">
+                            <div class="text-gray-900 font-semibold text-center">Delhi</div>
+                        </div>
+                        <img src="assets/delhi.jpg" alt="India Gate"
+                            class="absolute inset-0 w-full h-full object-cover transform translate-y-12 group-hover:translate-y-2 transition-transform duration-300 ease-in-out">
                     </div>
-                    <div class="city-card bg-white rounded-lg shadow-md h-40 cursor-pointer relative">
-                        <div class="city-name">Chennai</div>
-                        <img src="/api/placeholder/200/140" alt="Marina Beach"
-                            class="city-image object-cover rounded-b-lg">
-                    </div>
-                    <div class="city-card bg-white rounded-lg shadow-md h-40 cursor-pointer relative">
-                        <div class="city-name">Gurgaon</div>
-                        <img src="assets/gurgaon.png" alt="Cyber Hub" class="city-image object-cover rounded-b-lg">
+
+                    <div class="relative bg-white rounded-lg shadow-md h-40 cursor-pointer overflow-hidden group">
+                        <div class="absolute inset-x-0 top-0  p-4 z-10">
+                            <div class="text-gray-900 font-semibold text-center">Delhi</div>
+                        </div>
+                        <img src="assets/delhi.jpg" alt="India Gate"
+                            class="absolute inset-0 w-full h-full object-cover transform translate-y-12 group-hover:translate-y-2 transition-transform duration-300 ease-in-out">
                     </div>
                 </div>
             </div>
 
             <!-- Right Single Image -->
             <div class="w-full h-full">
-                <img src="https://images.unsplash.com/photo-1648792940059-3b782a7b8b20?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="Healthcare Professional" class="w-full h-full object-cover rounded-lg ">
+                <img src="https://img.freepik.com/free-psd/xray-scanner-room-hospital-room-generative-ai_587448-1997.jpg?t=st=1735906084~exp=1735909684~hmac=0ce4c45352743c4735e0d78ea86634e26a71cdd64b071acc746e637cd1951e1b&w=2000"
+                    alt="Healthcare Professional" class="w-full h-full object-cover rounded-lg">
             </div>
         </div>
-
-        <!-- View All Centers Button -->
-        <!-- <div class="flex justify-end mt-8">
-                <button
-                    class="px-6 py-2 border-2 border-purple-400 text-purple-600 rounded-full hover:bg-purple-50 transition-colors duration-300 flex items-center gap-2">
-                    View All Centres
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd"
-                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </button>
-            </div> -->
     </div>
+
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-purple-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Header -->
+            <div class=" mb-12">
+                <h2 class="text-5xl font-bold text-gray-900 mb-6">
+                    Bringing Tomorrow's Healthcare to Your Community Today
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl ">
+                    Explore how Telth is redefining healthcare through our network of Smart Care locations. Each site is
+                    equipped with state-of-the-art technology and designed to offer comprehensive services tailored to
+                    the
+                    modern health consumer.
+                </p>
+            </div>
+
+            <!-- Category Navigation -->
+            <div class="flex flex-wrap  gap-4 mb-12">
+                <button data-category="hospitals"
+                    class="category-btn active flex items-center px-6 py-3 rounded-full bg-white text-gray-600 hover:scale-105  transition-all duration-300 shadow-md">
+                    <svg class="w-8 h-8 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16M9 21h6" />
+                    </svg>
+                    <span class="font-medium">Telth Powered Hospitals</span>
+                </button>
+                <button data-category="clinics"
+                    class="category-btn flex items-center px-6 py-3 rounded-full bg-white text-gray-600 hover:scale-105 transition-all duration-300 shadow-md">
+                    <svg class="w-8 h-8 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2v16z" />
+                    </svg>
+                    <span class="font-medium">Smart Clinics</span>
+                </button>
+                <button data-category="kiosks"
+                    class="category-btn flex items-center px-6 py-3 rounded-full bg-white text-gray-600 hover:scale-105 transition-all duration-300 shadow-md">
+                    <svg class="w-8 h-8 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                    </svg>
+                    <span class="font-medium">Telth Kiosks</span>
+                </button>
+                <button data-category="hubs"
+                    class="category-btn flex items-center px-6 py-3 rounded-full bg-white text-gray-600 hover:scale-105 transition-all duration-300 shadow-md">
+                    <svg class="w-8 h-8 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    <span class="font-medium">Smart Care Hubs</span>
+                </button>
+            </div>
+
+            <!-- Content Display Area -->
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+                <div class="content-wrapper">
+                    <!-- Hospitals Content -->
+                    <div id="hospitals" class="category-content active">
+                        <div class="flex flex-col lg:flex-row">
+                            <div class="lg:w-1/2 relative">
+                                <div class="h-64 lg:h-full relative overflow-hidden image-container">
+                                    <img src="https://images.unsplash.com/photo-1596541223130-5d31a73fb6c6?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                        alt="Hospital" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-purple-900/20 to-transparent">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:w-1/2 p-8 lg:p-12">
+                                <div class="mb-8">
+                                    <svg class="w-12 h-12 text-purple-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16M9 21h6" />
+                                    </svg>
+                                    <h3 class="text-3xl font-bold text-gray-900 mt-4">Telth Powered Hospitals</h3>
+                                    <p class="mt-4 text-gray-600">Experience advanced healthcare with our Telth Powered
+                                        Hospitals, where cutting-edge technology and top-tier medical professionals come
+                                        together to offer unparalleled care.</p>
+                                </div>
+                                <div class="space-y-6">
+                                    <div class="feature-card flex items-start p-4 bg-purple-50 rounded-xl">
+                                        <div class="flex-shrink-0">
+                                            <div
+                                                class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
+                                                <span class="text-white font-medium">1</span>
+                                            </div>
+                                        </div>
+                                        <div class="ml-4">
+                                            <h4 class="text-lg font-semibold text-gray-900">Advanced Healthcare
+                                                Integration
+                                            </h4>
+                                            <p class="text-gray-600">Utilizes cutting-edge technology and smart
+                                                healthcare
+                                                solutions.</p>
+                                        </div>
+                                    </div>
+                                    <!-- Add other hospital features similarly -->
+                                </div>
+                                <button
+                                    class="mt-8 w-full py-4 bg-purple-600 text-white rounded-xl font-medium transition-all duration-300 hover:bg-purple-700 hover:shadow-lg transform hover:-translate-y-1">
+                                    Schedule a Visit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Clinics Content -->
+                    <div id="clinics" class="category-content">
+                        <div class="flex flex-col lg:flex-row">
+                            <div class="lg:w-1/2 relative">
+                                <div class="h-64 lg:h-full relative overflow-hidden image-container">
+                                    <img src="/api/placeholder/800/600" alt="Clinic" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-purple-900/20 to-transparent">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:w-1/2 p-8 lg:p-12">
+                                <div class="mb-8">
+                                    <svg class="w-12 h-12 text-purple-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2v16z" />
+                                    </svg>
+                                    <h3 class="text-3xl font-bold text-gray-900 mt-4">Telth Multispeciality Smart
+                                        Clinics</h3>
+                                    <p class="mt-4 text-gray-600">Our Smart Clinics extend the reach of precision
+                                        medicine into local communities, offering quick and efficient service.</p>
+                                </div>
+                                <div class="space-y-6">
+                                    <div class="feature-card flex items-start p-4 bg-purple-50 rounded-xl">
+                                        <div class="flex-shrink-0">
+                                            <div
+                                                class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
+                                                <span class="text-white font-medium">1</span>
+                                            </div>
+                                        </div>
+                                        <div class="ml-4">
+                                            <h4 class="text-lg font-semibold text-gray-900">Community-Centric Locations
+                                            </h4>
+                                            <p class="text-gray-600">Strategically placed to serve local communities
+                                                effectively.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-card flex items-start p-4 bg-purple-50 rounded-xl">
+                                        <div class="flex-shrink-0">
+                                            <div
+                                                class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
+                                                <span class="text-white font-medium">2</span>
+                                            </div>
+                                        </div>
+                                        <div class="ml-4">
+                                            <h4 class="text-lg font-semibold text-gray-900">Quick and Efficient Service
+                                            </h4>
+                                            <p class="text-gray-600">Designed for efficiency, reducing wait times and
+                                                improving patient experience.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-card flex items-start p-4 bg-purple-50 rounded-xl">
+                                        <div class="flex-shrink-0">
+                                            <div
+                                                class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
+                                                <span class="text-white font-medium">3</span>
+                                            </div>
+                                        </div>
+                                        <div class="ml-4">
+                                            <h4 class="text-lg font-semibold text-gray-900">High-Tech Equipment</h4>
+                                            <p class="text-gray-600">Features Telth's advanced health examination
+                                                systems for accurate diagnostics.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button
+                                    class="mt-8 w-full py-4 bg-purple-600 text-white rounded-xl font-medium transition-all duration-300 hover:bg-purple-700 hover:shadow-lg transform hover:-translate-y-1">
+                                    Find a Clinic Near You
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kiosks Content -->
+                    <div id="kiosks" class="category-content">
+                        <div class="flex flex-col lg:flex-row">
+                            <div class="lg:w-1/2 relative">
+                                <div class="h-64 lg:h-full relative overflow-hidden image-container">
+                                    <img src="/api/placeholder/800/600" alt="Kiosk" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-purple-900/20 to-transparent">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:w-1/2 p-8 lg:p-12">
+                                <div class="mb-8">
+                                    <svg class="w-12 h-12 text-purple-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                                    </svg>
+                                    <h3 class="text-3xl font-bold text-gray-900 mt-4">Telth Kiosks</h3>
+                                    <p class="mt-4 text-gray-600">Perfect for on-the-go care, Telth Kiosks are situated
+                                        in malls, supermarkets, and multi-story buildings, providing easy access to
+                                        health assessments.</p>
+                                </div>
+                                <div class="space-y-6">
+                                    <div class="feature-card flex items-start p-4 bg-purple-50 rounded-xl">
+                                        <div class="flex-shrink-0">
+                                            <div
+                                                class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
+                                                <span class="text-white font-medium">1</span>
+                                            </div>
+                                        </div>
+                                        <div class="ml-4">
+                                            <h4 class="text-lg font-semibold text-gray-900">Accessible Healthcare</h4>
+                                            <p class="text-gray-600">Located in high-traffic areas for easy access.</p>
+                                        </div>
+                                    </div>
+                                    <!-- Add other kiosk features -->
+                                </div>
+                                <button
+                                    class="mt-8 w-full py-4 bg-purple-600 text-white rounded-xl font-medium transition-all duration-300 hover:bg-purple-700 hover:shadow-lg transform hover:-translate-y-1">
+                                    Locate a Kiosk
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hubs Content -->
+                    <div id="hubs" class="category-content">
+                        <div class="flex flex-col lg:flex-row">
+                            <div class="lg:w-1/2 relative">
+                                <div class="h-64 lg:h-full relative overflow-hidden image-container">
+                                    <img src="/api/placeholder/800/600" alt="Hub" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-purple-900/20 to-transparent">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:w-1/2 p-8 lg:p-12">
+                                <div class="mb-8">
+                                    <svg class="w-12 h-12 text-purple-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                    <h3 class="text-3xl font-bold text-gray-900 mt-4">Smart Care Hubs</h3>
+                                    <p class="mt-4 text-gray-600">The centerpiece of our healthcare revolution, Smart
+                                        Care Hubs serve as comprehensive health management centers.</p>
+                                </div>
+                                <div class="space-y-6">
+                                    <div class="feature-card flex items-start p-4 bg-purple-50 rounded-xl">
+                                        <div class="flex-shrink-0">
+                                            <div
+                                                class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
+                                                <span class="text-white font-medium">1</span>
+                                            </div>
+                                        </div>
+                                        <div class="ml-4">
+                                            <h4 class="text-lg font-semibold text-gray-900">All-Inclusive Health
+                                                Management</h4>
+                                            <p class="text-gray-600">Serves as a full-service health management center
+                                                integrating various health services.</p>
+                                        </div>
+                                    </div>
+                                    <!-- Add other hub features -->
+                                </div>
+                                <button
+                                    class="mt-8 w-full py-4 bg-purple-600 text-white rounded-xl font-medium transition-all duration-300 hover:bg-purple-700 hover:shadow-lg transform hover:-translate-y-1">
+                                    Explore Our Hubs
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="min-h-screen max-w-7xl pt-20 mx-auto">
         <!-- Header -->
@@ -1059,6 +1933,7 @@
             });
         });
     </script>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             gsap.registerPlugin(ScrollTrigger);
@@ -1077,6 +1952,32 @@
                         start: 'top bottom-=100',
                         toggleActions: 'play none none reverse'
                     }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const categoryContents = document.querySelectorAll('.category-content');
+
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.dataset.category;
+
+                    // Update buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    // Update content with fade effect
+                    categoryContents.forEach(content => {
+                        if (content.id === category) {
+                            content.classList.add('active');
+                        } else {
+                            content.classList.remove('active');
+                        }
+                    });
                 });
             });
         });
